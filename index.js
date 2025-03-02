@@ -11,6 +11,8 @@ import schedule from 'node-schedule';
 import { serve } from '@hono/node-server'
 import { Hono } from 'hono'
 
+console.log('--------------------------------------------------');
+
 // Function to execute the booking process
 async function executeBooking() {
     const url = 'https://www.jotform.com/form/250478996735476';
@@ -43,7 +45,7 @@ async function executeBooking() {
 }
 
 // Schedule job to run every 5 minutes
-const job = schedule.scheduleJob('50 3 * * *', function () {
+const job = schedule.scheduleJob('0 4 * * *', function () {
     console.log('The answer to life, the universe, and everything!');
     console.log(`[${new Date().toISOString()}] Running scheduled booking task...`);
     executeBooking();
