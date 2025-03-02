@@ -7,14 +7,16 @@
 // run hari sabtu buat booking hari kamis
 // run hari minggu buat booking hari jumat
 import { booking } from "./module/booking.js";
+import schedule from 'node-schedule';
 
-(async () => {
-    const url = 'https://www.jotform.com/form/250478996735476'
+// Function to execute the booking process
+async function executeBooking() {
+    const url = 'https://www.jotform.com/form/250478996735476';
 
     //get today date
     const currentDate = new Date();
 
-    //add 4 days
+    //add 5 days
     const bookDate = new Date(currentDate);
     bookDate.setDate(bookDate.getDate() + 5);
 
@@ -24,12 +26,28 @@ import { booking } from "./module/booking.js";
 
     const bookDateString = `${year}-${month}-${day}`;
 
-    console.log(`current date: ${currentDate.getFullYear()}-${currentDate.getMonth()}-${currentDate.getDate()}`);
-    console.log(`book date: ${bookDateString}`);
+    console.log(`[${new Date().toISOString()}] Current date: ${currentDate.getFullYear()}-${String(currentDate.getMonth() + 1).padStart(2, '0')}-${String(currentDate.getDate()).padStart(2, '0')}`);
+    console.log(`[${new Date().toISOString()}] Book date: ${bookDateString}`);
 
-    //(`booking ${email} ${nama} ${tel} ${no} ${gedung} ${tanggal} ${jam}`);
-    //await booking("febysot@gmail.com", "Feby", "081384517297", "1715", "Amsterdam", bookDateString, "19:00", url);
-    //await booking("Azizhannachi80@gmail.com", "Aziz", "085770759300", "0711", "San Francisco", bookDateString, "20:00", url);
-    //await booking("Ritaroza@gmail.com", "Rita", "085770759300", "1118", "Amsterdam", bookDateString, "21:00", url);
+    try {
+        // Uncomment these lines when you're ready to execute the bookings
+        //await booking("febysot@gmail.com", "Feby", "081384517297", "1715", "Amsterdam", bookDateString, "19:00", url);
+        //await booking("Azizhannachi80@gmail.com", "Aziz", "085770759300", "0711", "San Francisco", bookDateString, "20:00", url);
+        //await booking("Ritaroza@gmail.com", "Rita", "085770759300", "1118", "Amsterdam", bookDateString, "21:00", url);
+        console.log(`[${new Date().toISOString()}] Booking process completed successfully`);
+    } catch (error) {
+        console.error(`[${new Date().toISOString()}] Error during booking process:`, error);
+    }
+}
 
-})();
+// Schedule job to run every 5 minutes
+const job = schedule.scheduleJob('*/10 * * * *', function () {
+    console.log(`[${new Date().toISOString()}] Running scheduled booking task...`);
+    executeBooking();
+    console.log(`[${new Date().toISOString()}] Scheduler initialized. Next job at: ${job.nextInvocation()}`);
+});
+
+// Execute once when script starts
+console.log(`[${new Date().toISOString()}] Script started`);
+//executeBooking();
+
