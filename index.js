@@ -69,5 +69,5 @@ serve({ fetch: app.fetch, port }).on('listening', () => {
     console.log(`Server is running on port ${port}`);
 });
 
-await executeBooking();
-console.log('--------------------------------- end booking');
+//await executeBooking();
+//console.log('--------------------------------- end booking');
