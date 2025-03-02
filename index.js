@@ -15,6 +15,7 @@ console.log('--------------------------------------------------');
 
 // Function to execute the booking process
 async function executeBooking() {
+    console.log('--------------------------------- start booking');
     const url = 'https://www.jotform.com/form/250478996735476';
 
     //get today date
@@ -34,11 +35,10 @@ async function executeBooking() {
     console.log(`[${new Date().toISOString()}] Book date: ${bookDateString}`);
 
     try {
-        console.log('--------------------------------- start booking');
         // Uncomment these lines when you're ready to execute the bookings
-        //await booking("febysot@gmail.com", "Feby", "081384517297", "1715", "Amsterdam", bookDateString, "19:00", url);
-        //await booking("Azizhannachi80@gmail.com", "Aziz", "085770759300", "0711", "San Francisco", bookDateString, "20:00", url);
-        //await booking("Ritaroza@gmail.com", "Rita", "085770759300", "1118", "Amsterdam", bookDateString, "21:00", url);
+        await booking("febysot@gmail.com", "Feby", "081384517297", "1715", "Amsterdam", bookDateString, "19:00", url);
+        await booking("Azizhannachi80@gmail.com", "Aziz", "085770759300", "0711", "San Francisco", bookDateString, "20:00", url);
+        await booking("Ritaroza@gmail.com", "Rita", "085770759300", "1118", "Amsterdam", bookDateString, "21:00", url);
         console.log(`[${new Date().toISOString()}] Booking process completed successfully`);
     } catch (error) {
         console.error(`[${new Date().toISOString()}] Error during booking process:`, error);
