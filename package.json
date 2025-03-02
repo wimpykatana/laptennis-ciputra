@@ -11,6 +11,8 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "@hono/node-server": "^1.13.8",
+    "hono": "^4.7.2",
     "node-schedule": "^2.1.1",
     "puppeteer": "^24.2.0"
   }

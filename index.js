@@ -51,3 +51,13 @@ const job = schedule.scheduleJob('*/10 * * * *', function () {
 console.log(`[${new Date().toISOString()}] Script started`);
 //executeBooking();
 
+const app = new Hono();
+
+app.get('/', async (c) => {
+    return c.text('nothing here');
+});
+
+const port = 8080;
+serve({ fetch: app.fetch, port }).on('listening', () => {
+    console.log(`Server is running on port ${port}`);
+});
