@@ -6,10 +6,8 @@
 // run hari jumat buat booking hari rabu
 // run hari sabtu buat booking hari kamis
 // run hari minggu buat booking hari jumat
+
 import { booking } from "./module/booking.js";
-import schedule from 'node-schedule';
-import { serve } from '@hono/node-server'
-import { Hono } from 'hono'
 
 console.log('--------------------------------------------------');
 
@@ -45,29 +43,5 @@ async function executeBooking() {
     }
 }
 
-// Schedule job to run every 5 minutes
-//const job = schedule.scheduleJob('0 4 * * *', function () {
-//    console.log('The answer to life, the universe, and everything!');
-//    console.log(`[${new Date().toISOString()}] Running scheduled booking task...`);
-//    executeBooking();
-//    console.log(`[${new Date().toISOString()}] Scheduler initialized. Next job at: ${job.nextInvocation()}`);
-//});
-
-//// Execute once when script starts
-//console.log(`[${new Date().toISOString()}] Script started`);
-//console.log(`[${new Date().toISOString()}] Scheduler initialized. Next job at: ${job.nextInvocation()}`);
-
-const app = new Hono();
-
-app.get('/', async (c) => {
-    await executeBooking();
-    return c.text('nothing here');
-});
-
-const port = 8080;
-serve({ fetch: app.fetch, port }).on('listening', () => {
-    console.log(`Server is running on port ${port}`);
-});
-
-//await executeBooking();
-//console.log('--------------------------------- end booking');
+await executeBooking();
+console.log('--------------------------------- end booking');

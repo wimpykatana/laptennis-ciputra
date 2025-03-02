@@ -23,18 +23,18 @@ export const booking = async (email, nama, tel, no, gedung, tanggal, jam, web) =
     await page.type('input#input_38', 'Sahabat Raket');
     await page.type('input#input_39', '08568809107');
 
-    //await page.waitForSelector(`div[data-value="${tanggal}"]`);
-    //await page.click(`div[data-value="${tanggal}"]`);
+    await page.waitForSelector(`div[data-value="${tanggal}"]`);
+    await page.click(`div[data-value="${tanggal}"]`);
 
-    //await page.waitForSelector(`div[data-value="${tanggal} ${jam}"]`);
-    //await page.click(`div[data-value="${tanggal} ${jam}"]`);
+    await page.waitForSelector(`div[data-value="${tanggal} ${jam}"]`);
+    await page.click(`div[data-value="${tanggal} ${jam}"]`);
 
     await page.waitForNetworkIdle();
 
     // // execution
-    //await page.waitForSelector('button#input_17');
-    //await page.click('button#input_17');
-    //await page.waitForNetworkIdle();
+    await page.waitForSelector('button#input_17');
+    await page.click('button#input_17');
+    await page.waitForNetworkIdle();
 
     //close browser
     await browser.close();
