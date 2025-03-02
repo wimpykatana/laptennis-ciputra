@@ -60,7 +60,7 @@ async function executeBooking() {
 const app = new Hono();
 
 app.get('/', async (c) => {
-    executeBooking();
+    await executeBooking();
     return c.text('nothing here');
 });
 
@@ -68,3 +68,6 @@ const port = 8080;
 serve({ fetch: app.fetch, port }).on('listening', () => {
     console.log(`Server is running on port ${port}`);
 });
+
+await executeBooking();
+console.log('--------------------------------- end booking');
