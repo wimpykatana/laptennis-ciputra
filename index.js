@@ -43,7 +43,8 @@ async function executeBooking() {
 }
 
 // Schedule job to run every 5 minutes
-const job = schedule.scheduleJob('*/1 * * * *', function () {
+const job = schedule.scheduleJob('50 3 * * *', function () {
+    console.log('The answer to life, the universe, and everything!');
     console.log(`[${new Date().toISOString()}] Running scheduled booking task...`);
     executeBooking();
     console.log(`[${new Date().toISOString()}] Scheduler initialized. Next job at: ${job.nextInvocation()}`);
