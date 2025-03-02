@@ -1,4 +1,4 @@
-// run jam 23:20
+// run jam 23:20 (16:20 UTC)
 // run hari senin buat booking hari sabtu
 // run hari selasa buat booking hari minggu
 // run hari rabu buat booking hari senin
@@ -43,7 +43,7 @@ async function executeBooking() {
 }
 
 // Schedule job to run every 5 minutes
-const job = schedule.scheduleJob('*/10 * * * *', function () {
+const job = schedule.scheduleJob('*/1 * * * *', function () {
     console.log(`[${new Date().toISOString()}] Running scheduled booking task...`);
     executeBooking();
     console.log(`[${new Date().toISOString()}] Scheduler initialized. Next job at: ${job.nextInvocation()}`);
@@ -51,7 +51,7 @@ const job = schedule.scheduleJob('*/10 * * * *', function () {
 
 // Execute once when script starts
 console.log(`[${new Date().toISOString()}] Script started`);
-//executeBooking();
+console.log(`[${new Date().toISOString()}] Scheduler initialized. Next job at: ${job.nextInvocation()}`);
 
 const app = new Hono();
 
