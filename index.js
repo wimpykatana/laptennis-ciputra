@@ -34,6 +34,7 @@ async function executeBooking() {
     console.log(`[${new Date().toISOString()}] Book date: ${bookDateString}`);
 
     try {
+        console.log('--------------------------------- start booking');
         // Uncomment these lines when you're ready to execute the bookings
         //await booking("febysot@gmail.com", "Feby", "081384517297", "1715", "Amsterdam", bookDateString, "19:00", url);
         //await booking("Azizhannachi80@gmail.com", "Aziz", "085770759300", "0711", "San Francisco", bookDateString, "20:00", url);
@@ -45,20 +46,21 @@ async function executeBooking() {
 }
 
 // Schedule job to run every 5 minutes
-const job = schedule.scheduleJob('0 4 * * *', function () {
-    console.log('The answer to life, the universe, and everything!');
-    console.log(`[${new Date().toISOString()}] Running scheduled booking task...`);
-    executeBooking();
-    console.log(`[${new Date().toISOString()}] Scheduler initialized. Next job at: ${job.nextInvocation()}`);
-});
+//const job = schedule.scheduleJob('0 4 * * *', function () {
+//    console.log('The answer to life, the universe, and everything!');
+//    console.log(`[${new Date().toISOString()}] Running scheduled booking task...`);
+//    executeBooking();
+//    console.log(`[${new Date().toISOString()}] Scheduler initialized. Next job at: ${job.nextInvocation()}`);
+//});
 
-// Execute once when script starts
-console.log(`[${new Date().toISOString()}] Script started`);
-console.log(`[${new Date().toISOString()}] Scheduler initialized. Next job at: ${job.nextInvocation()}`);
+//// Execute once when script starts
+//console.log(`[${new Date().toISOString()}] Script started`);
+//console.log(`[${new Date().toISOString()}] Scheduler initialized. Next job at: ${job.nextInvocation()}`);
 
 const app = new Hono();
 
 app.get('/', async (c) => {
+    executeBooking();
     return c.text('nothing here');
 });
 
