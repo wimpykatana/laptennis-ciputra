@@ -31,7 +31,7 @@ export const booking = async (email, nama, tel, no, gedung, tanggal, jam, web) =
 
     await page.waitForNetworkIdle();
 
-    // // execution
+    //execution
     await page.waitForSelector('button#input_17');
     await page.click('button#input_17');
     await page.waitForNetworkIdle();
