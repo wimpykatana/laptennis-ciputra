@@ -4,7 +4,12 @@ export const booking = async (email, nama, tel, no, gedung, tanggal, jam, web) =
     console.log(`booking using ${email} ${nama} ${tel} ${no} ${gedung} ${tanggal} ${jam}`);
 
     // Launch the browser and open a new blank page
-    const browser = await puppeteer.launch({ headless: true, devtools: true });
+    const browser = await puppeteer.launch({
+        headless: "new",
+        devtools: false,
+        protocolTimeout: 120000,
+        args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage'],
+    });
     const page = await browser.newPage();
 
     // Set screen size
