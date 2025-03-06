@@ -46,8 +46,8 @@ async function executeBooking() {
     console.log('--------------------------------- end booking');
 }
 
-// Schedule the job to run at 23:20 every day
-const job = schedule.scheduleJob('20 23 * * *', async () => {
+// Schedule the job to run at 23:20 every day except Friday
+const job = schedule.scheduleJob('20 23 * * 0,1,2,3,4,6', async () => {
     console.log(`[${new Date().toISOString()}] It's 23:20! Starting scheduled booking process...`);
     await executeBooking();
     console.log(`[${new Date().toISOString()}] Next scheduled run: ${job.nextInvocation()}`);
